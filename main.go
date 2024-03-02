@@ -4,6 +4,7 @@ import (
 	"bytesize/db"
 	"fmt"
 	"log"
+	"os"
 
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
@@ -11,7 +12,8 @@ import (
 
 func main() {
 	err := godotenv.Load()
-	if err != nil {
+	env := os.Getenv("APP_ENV")
+	if err != nil && (env == "" || env == "dev") {
 		log.Fatal("Error loading .env file")
 	}
 
