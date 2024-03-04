@@ -10,6 +10,3 @@ COPY --from=builder /bytesize/bytesize /app/bytesize
 EXPOSE 8080
 ENV APP_ENV=production
 ENTRYPOINT [ "/app/bytesize" ]
-
-
-
