@@ -26,5 +26,5 @@ func InitDatabase() {
 		log.Fatal("Could not connect to the database.")
 	}
 
-	DB.AutoMigrate(&models.User{}, &models.Article{}, &models.Reaction{}, &models.Comment{}, &models.Section{})
+	DB.AutoMigrate(&models.User{}, &models.Article{}, &models.Reaction{}, &models.Comment{})
 }
