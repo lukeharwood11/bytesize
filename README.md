@@ -8,7 +8,7 @@ A lightweight blog website creator.
 To start the server, run 
 
 ```bash
-go mod init
+go mod download
 ```
 
 Next, start the node development server...
