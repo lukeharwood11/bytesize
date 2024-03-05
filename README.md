@@ -20,3 +20,4 @@ bash ./start.sh
 This will create all your development dependencies and will start the local dev server.
 
 ![Byte, the mascot](./assets/gopher.png)
+> ^^ the really cool mascot
