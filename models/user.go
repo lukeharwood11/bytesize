@@ -1,7 +1,5 @@
 package models
 
-import "gorm.io/gorm"
-
 // defines the permissions of each user
 var Role = map[string]int{
 	"admin":   0,
@@ -10,7 +8,7 @@ var Role = map[string]int{
 }
 
 type User struct {
-	gorm.Model
+	BaseModel
 	Name     string
 	Password string
 	Username string

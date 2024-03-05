@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytesize/controllers"
 	"bytesize/db"
 	"log"
 	"os"
@@ -16,8 +17,8 @@ func init() {
 
 func initializeEnvironmentVariables() {
 	err := godotenv.Load()
-	env := os.Getenv("APP_ENV")
-	if err != nil && (env == "" || env == "dev") {
+	env := os.Getenv("GIN_MODE")
+	if err != nil && (env == "" || env != "release") {
 		log.Fatal("Error loading .env file.")
 	}
 }
@@ -33,11 +34,13 @@ func main() {
 		log.Fatal("Could not connect to the database")
 	}
 	r := gin.Default()
+	r.ForwardedByClientIP = true
+	r.SetTrustedProxies([]string{"127.0.0.1"})
 
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
+	api := r.Group("/api")
+
+	{
+		api.GET("/user", controllers.CreateNewUser)
+	}
 	r.Run("0.0.0.0:8080") // listen and serve on 0.0.0.0:8080
 }

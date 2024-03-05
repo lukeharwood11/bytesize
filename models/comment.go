@@ -1,6 +1,6 @@
 package models
 
-import "gorm.io/gorm"
+import uuid "github.com/satori/go.uuid"
 
 var ReactionType = map[string]int{
 	"like":          0,
@@ -10,14 +10,17 @@ var ReactionType = map[string]int{
 }
 
 type Reaction struct {
-	gorm.Model
-	Article Article
-	Type    int
+	BaseModel
+	Article   Article
+	ArticleID uuid.UUID
+	Type      int
 }
 
 type Comment struct {
-	gorm.Model
-	User    User
-	Text    string
-	Article Article
+	BaseModel
+	User      User
+	UserID    uuid.UUID
+	Text      string
+	Article   Article
+	ArticleID uint
 }

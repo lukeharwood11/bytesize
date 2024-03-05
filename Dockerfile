@@ -8,5 +8,5 @@ FROM scratch
 WORKDIR /app
 COPY --from=builder /bytesize/bytesize /app/bytesize
 EXPOSE 8080
-ENV APP_ENV=production
+ENV GIN_MODE=release
 ENTRYPOINT [ "/app/bytesize" ]
