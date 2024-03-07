@@ -1,7 +1,6 @@
 package db
 
 import (
-	"bytesize/models"
 	"fmt"
 	"log"
 	"os"
@@ -25,11 +24,4 @@ func InitDatabase() {
 		// this will also call os.Exit(1)
 		log.Fatal("Could not connect to the database.")
 	}
-
-	DB.AutoMigrate(&models.User{}, &models.Article{}, &models.Reaction{}, &models.Comment{})
-	u := models.User{Name: "Jinzhu", Password: "hello", Role: 1, Username: "lukeharwood11"}
-
-	result := DB.Create(&u) // pass pointer of data to Create
-
-	fmt.Println("%s, %s, %s", u.ID, result.Error, result.RowsAffected)
 }
